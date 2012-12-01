@@ -1,0 +1,21 @@
+
+Original:
+
+Bootloaders
+CopterControl
+PiOS
+
+Canidate:
+
+BoardDefs         -Board Specific Definitions
+Bootloaders       -Bootloader system
+DeviceDefs        -Device Specific Definitions and mappings
+CMSIS_Version     -CMSIS Source to include
+FreeRTOS_Version  -FreeRTOS Source to include
+OPCC              -OpenPilot Flight Controller System
+PiOS              -PiOS Source to include
+PiOSDeviceDrivers -PiOS specific Device Drivers
+
+*Besides BoardDefs, DeviceDefs, and PiOSDeviceDrivers, the rest are generic. Call and inherit properly to build required configuration.
+
+
