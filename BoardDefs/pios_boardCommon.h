@@ -40,19 +40,29 @@ extern uint32_t pios_com_bridge_id;          // PIOS_COM
 extern uint32_t pios_com_vcp_id;             // PIOS_COM
 extern uint32_t pios_com_telem_usb_id;       // PIOS_COM
 
+
+//------------------
+// Layout for this file should be (as by information and access):
+//        Globals above
+//        Device Clock and Watchdog - everything is defined from this
+//        Device inheritance to pass to PiOS - only adjusted when new or specific 
+//               capabilities are added, basicly an ifdef override - flash size etc
+//        Bootloader settings
+//        PiOS settings - these will be adjusted most often and is the bulk
+//-------------------
+
+
 //-------------------------
-// System Settings
+// Device Clock Settings  - Not sure why these are defined as PiOS, they are device ...
 //-------------------------
 #define PIOS_MASTER_CLOCK			72000000    _INHERIT_MASTER_CLOCK
 #define PIOS_PERIPHERAL_CLOCK			(PIOS_MASTER_CLOCK / 2)
 
-//-------------------------
-// Interrupt Priorities
-//-------------------------
-#define PIOS_IRQ_PRIO_LOW			12		// lower than RTOS
-#define PIOS_IRQ_PRIO_MID			8		// higher than RTOS
-#define PIOS_IRQ_PRIO_HIGH			5		// for SPI, ADC, I2C etc...
-#define PIOS_IRQ_PRIO_HIGHEST			4 		// for USART etc...
+//------------------------
+// Device WATCHDOG_SETTINGS - Not sure why these are defined as PiOS, they are hardware ... 
+//------------------------
+#define PIOS_WATCHDOG_TIMEOUT    250      _INHERIT_WATCHDOG_TIMEOUT // CC and PiPX differ
+#define PIOS_WDG_REGISTER        BKP_DR4  _INHERIT_WATCHDOG_REGISTER   // Odd place to hard define this, this should come from the vendor device header 
 
 //------------------------
 // BOOTLOADER_SETTINGS
@@ -61,18 +71,22 @@ extern uint32_t pios_com_telem_usb_id;       // PIOS_COM
 #define BOARD_WRITABLE	TRUE
 #define MAX_DEL_RETRYS	3
 
-
 //------------------------
-// WATCHDOG_SETTINGS
+// PIOS WATCHDOG_SETTINGS
 //------------------------
-#define PIOS_WATCHDOG_TIMEOUT    250  _INHERIT_WATCHDOG_TIMEOUT // CC and PiPX differ
-#define PIOS_WDG_REGISTER        BKP_DR4 
+#define PIOS_WDG_ACTUATOR        0x0001   
+#define PIOS_WDG_STABILIZATION   0x0002   
+#define PIOS_WDG_ATTITUDE        0x0004   
+#define PIOS_WDG_MANUAL          0x0008   
+#define PIOS_WDG_AUTOTUNE        0x0010 
 
-//#define PIOS_WDG_ACTUATOR        0x0001
-//#define PIOS_WDG_STABILIZATION   0x0002
-//#define PIOS_WDG_ATTITUDE        0x0004
-//#define PIOS_WDG_MANUAL          0x0008
-//#define PIOS_WDG_AUTOTUNE        0x0010
+//-------------------------
+// Interrupt Priorities
+//-------------------------
+#define PIOS_IRQ_PRIO_LOW			12		// lower than RTOS
+#define PIOS_IRQ_PRIO_MID			8		// higher than RTOS
+#define PIOS_IRQ_PRIO_HIGH			5		// for SPI, ADC, I2C etc...
+#define PIOS_IRQ_PRIO_HIGHEST			4 		// for USART etc...
 
 //------------------------
 // TELEMETRY
