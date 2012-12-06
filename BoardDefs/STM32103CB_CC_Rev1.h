@@ -56,25 +56,17 @@ TIM4  |  RC In 1  |  Servo 3  |  Servo 2  |  Servo 1
 /* Channel 11 - 				*/
 /* Channel 12 - 				*/
 
-
-//------------------------
-// BOOTLOADER_SETTINGS
-//------------------------
-#define BOARD_READABLE	TRUE
-#define BOARD_WRITABLE	TRUE
-#define MAX_DEL_RETRYS	3
-
+//-------------------------
+// System Settings
+//-------------------------
+#define PIOS_MASTER_CLOCK			72000000
+#define PIOS_PERIPHERAL_CLOCK			(PIOS_MASTER_CLOCK / 2)
 
 //------------------------
 // WATCHDOG_SETTINGS
 //------------------------
 #define PIOS_WATCHDOG_TIMEOUT    250
 #define PIOS_WDG_REGISTER        BKP_DR4
-#define PIOS_WDG_ACTUATOR        0x0001
-#define PIOS_WDG_STABILIZATION   0x0002
-#define PIOS_WDG_ATTITUDE        0x0004
-#define PIOS_WDG_MANUAL          0x0008
-#define PIOS_WDG_AUTOTUNE        0x0010
 
 //------------------------
 // TELEMETRY
@@ -86,34 +78,12 @@ TIM4  |  RC In 1  |  Servo 3  |  Servo 2  |  Servo 1
 //------------------------
 #define PIOS_LED_HEARTBEAT	0
 
-//-------------------------
-// System Settings
-//-------------------------
-#define PIOS_MASTER_CLOCK			72000000
-#define PIOS_PERIPHERAL_CLOCK			(PIOS_MASTER_CLOCK / 2)
-
-//-------------------------
-// Interrupt Priorities
-//-------------------------
-#define PIOS_IRQ_PRIO_LOW			12		// lower than RTOS
-#define PIOS_IRQ_PRIO_MID			8		// higher than RTOS
-#define PIOS_IRQ_PRIO_HIGH			5		// for SPI, ADC, I2C etc...
-#define PIOS_IRQ_PRIO_HIGHEST			4 		// for USART etc...
 
 //------------------------
 // PIOS_I2C
 // See also pios_board.c
 //------------------------
 #define PIOS_I2C_MAX_DEVS			1
-extern uint32_t pios_i2c_flexi_adapter_id;
-#define PIOS_I2C_MAIN_ADAPTER			(pios_i2c_flexi_adapter_id)
-#define PIOS_I2C_ESC_ADAPTER			(pios_i2c_flexi_adapter_id)
-#define PIOS_I2C_BMP085_ADAPTER			(pios_i2c_flexi_adapter_id)
-
-//------------------------
-// PIOS_BMP085
-//------------------------
-#define PIOS_BMP085_OVERSAMPLING                3
 
 //-------------------------
 // SPI
@@ -133,24 +103,6 @@ extern uint32_t pios_i2c_flexi_adapter_id;
 // See also pios_board.c
 //-------------------------
 #define PIOS_COM_MAX_DEVS			3
-
-extern uint32_t pios_com_telem_rf_id;
-#define PIOS_COM_TELEM_RF               (pios_com_telem_rf_id)
-#define PIOS_COM_DEBUG                  PIOS_COM_TELEM_RF
-
-#if defined(PIOS_INCLUDE_GPS)
-extern uint32_t pios_com_gps_id;
-#define PIOS_COM_GPS                    (pios_com_gps_id)
-#endif	/* PIOS_INCLUDE_GPS */
-
-extern uint32_t pios_com_bridge_id;
-#define PIOS_COM_BRIDGE			(pios_com_bridge_id)
-
-extern uint32_t pios_com_vcp_id;
-#define PIOS_COM_VCP			(pios_com_vcp_id)
-
-extern uint32_t pios_com_telem_usb_id;
-#define PIOS_COM_TELEM_USB              (pios_com_telem_usb_id)
 
 //-------------------------
 // ADC
@@ -183,15 +135,9 @@ extern uint32_t pios_com_telem_usb_id;
 
 #define PIOS_ADC_NUM_PINS			3
 
-#define PIOS_ADC_PORTS				{ PIOS_ADC_PIN1_GPIO_PORT, PIOS_ADC_PIN2_GPIO_PORT, PIOS_ADC_PIN3_GPIO_PORT }
-#define PIOS_ADC_PINS				{ PIOS_ADC_PIN1_GPIO_PIN, PIOS_ADC_PIN2_GPIO_PIN, PIOS_ADC_PIN3_GPIO_PIN }
-#define PIOS_ADC_CHANNELS			{ PIOS_ADC_PIN1_GPIO_CHANNEL, PIOS_ADC_PIN2_GPIO_CHANNEL, PIOS_ADC_PIN3_GPIO_CHANNEL }
-#define PIOS_ADC_MAPPING			{ PIOS_ADC_PIN1_ADC, PIOS_ADC_PIN2_ADC, PIOS_ADC_PIN3_ADC }
-#define PIOS_ADC_CHANNEL_MAPPING		{ PIOS_ADC_PIN1_ADC_NUMBER, PIOS_ADC_PIN2_ADC_NUMBER, PIOS_ADC_PIN3_ADC_NUMBER }
-#define PIOS_ADC_NUM_CHANNELS			(PIOS_ADC_NUM_PINS + PIOS_ADC_USE_TEMP_SENSOR)
+
 #define PIOS_ADC_NUM_ADC_CHANNELS		2
 #define PIOS_ADC_USE_ADC2			1
-#define PIOS_ADC_CLOCK_FUNCTION			RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1 | RCC_APB2Periph_ADC2, ENABLE)
 #define PIOS_ADC_ADCCLK				RCC_PCLK2_Div8
 /* RCC_PCLK2_Div2: ADC clock = PCLK2/2 */
 /* RCC_PCLK2_Div4: ADC clock = PCLK2/4 */
@@ -202,7 +148,7 @@ extern uint32_t pios_com_telem_usb_id;
 /* With an ADCCLK = 14 MHz and a sampling time of 239.5 cycles: */
 /* Tconv = 239.5 + 12.5 = 252 cycles = 18�s */
 /* (1 / (ADCCLK / CYCLES)) = Sample Time (�S) */
-#define PIOS_ADC_IRQ_PRIO			PIOS_IRQ_PRIO_LOW
+
 
 // Currently analog acquistion hard coded at 480 Hz
 // PCKL2 = HCLK / 16
@@ -241,12 +187,6 @@ extern uint32_t pios_com_telem_usb_id;
 //-------------------------
 #define PIOS_SBUS_MAX_DEVS			1
 #define PIOS_SBUS_NUM_INPUTS			(16+2)
-
-//-------------------------
-// Servo outputs
-//-------------------------
-#define PIOS_SERVO_UPDATE_HZ                    50
-#define PIOS_SERVOS_INITIAL_POSITION            0 /* dont want to start motors, have no pulse till settings loaded */
 
 //--------------------------
 // Timer controller settings

@@ -60,9 +60,12 @@ extern uint32_t pios_com_telem_usb_id;       // PIOS_COM
 
 //------------------------
 // Device WATCHDOG_SETTINGS - Not sure why these are defined as PiOS, they are hardware ... 
+//   Not in AHRS
 //------------------------
+#if defined(_INHERIT_WATCHDOG_REGISTER)
 #define PIOS_WATCHDOG_TIMEOUT    250      _INHERIT_WATCHDOG_TIMEOUT // CC and PiPX differ
 #define PIOS_WDG_REGISTER        BKP_DR4  _INHERIT_WATCHDOG_REGISTER   // Odd place to hard define this, this should come from the vendor device header 
+#endif
 
 //------------------------
 // BOOTLOADER_SETTINGS
@@ -89,9 +92,12 @@ extern uint32_t pios_com_telem_usb_id;       // PIOS_COM
 #define PIOS_IRQ_PRIO_HIGHEST			4 		// for USART etc...
 
 //------------------------
-// TELEMETRY
+// TELEMETRY - The same for all but AHRS
+// Add TELEMETRY def to devices 
 //------------------------
-#define TELEM_QUEUE_SIZE         20  _INHERIT_TELEM_QUEUE_SIZE 
+#if defined(TELEMETRY)
+#define TELEM_QUEUE_SIZE         20  // no need to inherit, all are the same
+#endif
 
 //------------------------
 // PIOS_LED
