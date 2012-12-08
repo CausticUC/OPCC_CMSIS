@@ -8,6 +8,10 @@ PiOS
 Canidate:
 
 BoardDefs         -Board Specific Definitions
+	->Bootloaders -not sure why it is here...unless it is board defs for the bootloader? -rename to bootloader_common?
+	- pios_common
+	- pios_boardCommon
+	- board-specific-files
 Bootloaders       -Bootloader system
 DeviceDefs        -Device Specific Definitions and mappings
 CMSIS_Version     -CMSIS Source to include
