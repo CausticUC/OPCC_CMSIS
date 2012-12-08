@@ -159,6 +159,8 @@ extern uint32_t pios_com_telem_usb_id;       // PIOS_COM
 #define PIOS_ADC_MAPPING			{ PIOS_ADC_PIN1_ADC, PIOS_ADC_PIN2_ADC, PIOS_ADC_PIN3_ADC }
 #define PIOS_ADC_CHANNEL_MAPPING		{ PIOS_ADC_PIN1_ADC_NUMBER, PIOS_ADC_PIN2_ADC_NUMBER, PIOS_ADC_PIN3_ADC_NUMBER }
 #define PIOS_ADC_NUM_CHANNELS			(PIOS_ADC_NUM_PINS + PIOS_ADC_USE_TEMP_SENSOR)
+#define PIOS_ADC_NUM_ADC_CHANNELS		2   _INHERIT_ADC_NUM_ADC_CHANNELS // differs for CC PipX
+#define PIOS_ADC_USE_ADC2			1 _INHERIT_ADC_USE_ADC2 // differs for CC PipX
 
 // Where is RCC inherited from?? Clocks should be defined in respective board files
 #define PIOS_ADC_CLOCK_FUNCTION			RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1 | RCC_APB2Periph_ADC2, ENABLE)
