@@ -14,6 +14,9 @@ BoardDefs         -Board Specific Definitions
 	- board-specific-files
 Bootloaders       -Bootloader system
 DeviceDefs        -Device Specific Definitions and mappings
+	- STM32F10x_StdPeriph_Lib_V3.5.0    ST is a mess
+	- Libraries\CMSIS\CM3\DeviceSupport\ST\STM32F10x  Is what we are looking for, the vendor Device Peripheral Access Layer needed by CMSIS-RTOS
+
 CMSIS_Version     -CMSIS Source to include
 FreeRTOS_Version  -FreeRTOS Source to include
 OPCC              -OpenPilot Flight Controller System
@@ -21,5 +24,4 @@ PiOS              -PiOS Source to include
 PiOSDeviceDrivers -PiOS specific Device Drivers
 
 *Besides BoardDefs, DeviceDefs, and PiOSDeviceDrivers, the rest are generic. Call and inherit properly to build required configuration.
-
 
