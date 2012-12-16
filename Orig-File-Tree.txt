@@ -1,0 +1,299 @@
+﻿GitHub\OpenPilot\flight
+   │
+   ├[board_hw_defs]
+   │   │
+   │   ├[coptercontrol]
+   │   ├[pipxtreme]
+   │   ├[revolution]
+   │   └[simposix]
+   ├[Bootloaders]
+   │   │
+   │   ├[BootloaderUpdater]
+   │   │   │
+   │   │   └[inc]
+   │   ├[CopterControl]
+   │   │   │
+   │   │   └[inc]
+   │   ├[PipXtreme]
+   │   │   │
+   │   │   └[inc]
+   │   └[Revolution]
+   │       │
+   │       └[inc]
+   ├[CopterControl]
+   │   │
+   │   └[System]
+   │       │
+   │       └[inc]
+   ├[Doc]
+   │   │
+   │   ├[Architecture]
+   │   ├[Doxygen]
+   │   └[License]
+   ├[EntireFlash]
+   ├[Libraries]
+   │   │
+   │   ├[inc]
+   │   ├[math]
+   │   ├[PyMite]
+   │   │   │
+   │   │   ├[lib]
+   │   │   ├[platform]
+   │   │   │   │
+   │   │   │   ├[desktop]
+   │   │   │   ├[openpilot]
+   │   │   │   ├[openpilot_sitl]
+   │   │   │   └[windows]
+   │   │   ├[tools]
+   │   │   └[vm]
+   │   └[rscode]
+   ├[Modules]
+   │   │
+   │   ├[Actuator]
+   │   │   │
+   │   │   └[inc]
+   │   ├[AHRSComms]
+   │   │   │
+   │   │   └[inc]
+   │   ├[Altitude]
+   │   │   │
+   │   │   ├[inc]
+   │   │   └[revolution]
+   │   │       │
+   │   │       └[inc]
+   │   ├[AltitudeHold]
+   │   │   │
+   │   │   └[inc]
+   │   ├[Attitude]
+   │   │   │
+   │   │   ├[inc]
+   │   │   └[revolution]
+   │   │       │
+   │   │       └[inc]
+   │   ├[Autotune]
+   │   │   │
+   │   │   └[inc]
+   │   ├[Battery]
+   │   │   │
+   │   │   └[inc]
+   │   ├[CameraStab]
+   │   │   │
+   │   │   └[inc]
+   │   ├[ComUsbBridge]
+   │   ├[Example]
+   │   │   │
+   │   │   └[inc]
+   │   ├[Fault]
+   │   ├[FirmwareIAP]
+   │   │   │
+   │   │   └[inc]
+   │   ├[FlightPlan]
+   │   │   │
+   │   │   ├[flightplans]
+   │   │   ├[inc]
+   │   │   └[lib]
+   │   ├[GPS]
+   │   │   │
+   │   │   └[inc]
+   │   ├[Guidance]
+   │   │   │
+   │   │   └[inc]
+   │   ├[ManualControl]
+   │   │   │
+   │   │   └[inc]
+   │   ├[MK]
+   │   │   │
+   │   │   └[MKSerial]
+   │   │       │
+   │   │       └[inc]
+   │   ├[Osd]
+   │   │   │
+   │   │   └[OsdEtStd]
+   │   ├[OveroSync]
+   │   │   │
+   │   │   └[inc]
+   │   ├[PipXtreme]
+   │   │   │
+   │   │   └[inc]
+   │   ├[RadioComBridge]
+   │   │   │
+   │   │   └[inc]
+   │   ├[Sensors]
+   │   │   │
+   │   │   └[inc]
+   │   ├[Stabilization]
+   │   │   │
+   │   │   └[inc]
+   │   ├[System]
+   │   │   │
+   │   │   └[inc]
+   │   ├[Telemetry]
+   │   │   │
+   │   │   └[inc]
+   │   └[TxPID]
+   │       │
+   │       └[inc]
+   ├[OpenPilot]
+   │   │
+   │   └[System]
+   ├[PiOS]
+   │   │
+   │   ├[Boards]
+   │   ├[Common]
+   │   │   │
+   │   │   └[Libraries]
+   │   │       │
+   │   │       ├[CMSIS2]
+   │   │       │   │
+   │   │       │   └[Include]
+   │   │       ├[dosfs]
+   │   │       ├[FreeRTOS]
+   │   │       │   │
+   │   │       │   └[Source]
+   │   │       │       │
+   │   │       │       └[include]
+   │   │       └[msheap]
+   │   ├[inc]
+   │   ├[STM32F10x]
+   │   │   │
+   │   │   └[Libraries]
+   │   │       │
+   │   │       ├[CMSIS]
+   │   │       │   │
+   │   │       │   └[Core]
+   │   │       │       │
+   │   │       │       ├[CM3]
+   │   │       │       │   │
+   │   │       │       │   └[startup]
+   │   │       │       │       │
+   │   │       │       │       └[gcc]
+   │   │       │       └[Documentation]
+   │   │       ├[dosfs]
+   │   │       ├[FreeRTOS]
+   │   │       │   │
+   │   │       │   └[Source]
+   │   │       │       │
+   │   │       │       ├[include]
+   │   │       │       └[portable]
+   │   │       │           │
+   │   │       │           ├[GCC]
+   │   │       │           │   │
+   │   │       │           │   └[ARM_CM3]
+   │   │       │           └[MemMang]
+   │   │       ├[msd]
+   │   │       ├[STM32F10x_StdPeriph_Driver]
+   │   │       │   │
+   │   │       │   ├[inc]
+   │   │       │   └[src]
+   │   │       └[STM32_USB-FS-Device_Driver]
+   │   │           │
+   │   │           ├[inc]
+   │   │           └[src]
+   │   └[STM32F4xx]
+   │       │
+   │       ├[inc]
+   │       └[Libraries]
+   │           │
+   │           ├[CMSIS2]
+   │           │   │
+   │           │   └[Device]
+   │           │       │
+   │           │       └[ST]
+   │           │           │
+   │           │           └[STM32F4xx]
+   │           │               │
+   │           │               ├[Include]
+   │           │               └[Source]
+   │           ├[FreeRTOS]
+   │           │   │
+   │           │   └[Source]
+   │           │       │
+   │           │       └[portable]
+   │           │           │
+   │           │           ├[GCC]
+   │           │           │   │
+   │           │           │   └[ARM_CM4]
+   │           │           └[MemMang]
+   │           ├[STM32F4xx_StdPeriph_Driver]
+   │           │   │
+   │           │   ├[inc]
+   │           │   └[src]
+   │           ├[STM32_USB_Device_Library]
+   │           │   │
+   │           │   └[Core]
+   │           │       │
+   │           │       ├[inc]
+   │           │       └[src]
+   │           └[STM32_USB_OTG_Driver]
+   │               │
+   │               ├[inc]
+   │               └[src]
+   ├[PiOS.posix]
+   │   │
+   │   ├[Boards]
+   │   ├[inc]
+   │   └[posix]
+   │       │
+   │       └[Libraries]
+   │           │
+   │           └[FreeRTOS]
+   │               │
+   │               └[Source]
+   │                   │
+   │                   ├[include]
+   │                   └[portable]
+   │                       │
+   │                       ├[GCC]
+   │                       │   │
+   │                       │   └[Posix]
+   │                       └[MemMang]
+   ├[PiOS.win32]
+   │   │
+   │   ├[inc]
+   │   └[win32]
+   │       │
+   │       └[Libraries]
+   │           │
+   │           └[FreeRTOS]
+   │               │
+   │               └[Source]
+   │                   │
+   │                   ├[include]
+   │                   └[portable]
+   │                       │
+   │                       ├[GCC]
+   │                       │   │
+   │                       │   └[Win32]
+   │                       └[MemMang]
+   ├[PipXtreme]
+   │   │
+   │   └[System]
+   │       │
+   │       └[inc]
+   ├[Project]
+   │   │
+   │   ├[Eclipse]
+   │   ├[FOSS-JTAG]
+   │   ├[gdb]
+   │   ├[OpenOCD]
+   │   ├[OpenPilotOSX]
+   │   │   │
+   │   │   └[OpenPilotOSX.xcodeproj]
+   │   └[Windows USB]
+   ├[RemoteSystemsTempFiles]
+   ├[Revolution]
+   │   │
+   │   └[System]
+   │       │
+   │       └[inc]
+   ├[SimPosix]
+   │   │
+   │   └[System]
+   │       │
+   │       └[inc]
+   ├[UAVObjects]
+   │   │
+   │   └[inc]
+   └[UAVTalk]
+       │
+       └[inc]
