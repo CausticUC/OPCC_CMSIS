@@ -25,6 +25,7 @@ CMSIS_Version     -CMSIS Source to include
 FreeRTOS_Version  -FreeRTOS Source to include
 
 OPCC              -OpenPilot Flight Controller System
+			-Not sure why this is special. Should be a subdir for hardware
 
 PiOS              -PiOS Source to include
 
